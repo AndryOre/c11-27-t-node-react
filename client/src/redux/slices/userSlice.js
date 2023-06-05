@@ -17,12 +17,15 @@ export const registerUser = createAsyncThunk(
   },
 );
 
-export const updateUserPassword = createAsyncThunk(
-  "user/updateUserPassword",
-  async (userData, { dispatch, rejectWithValue }) => {
+export const resetUserPassword = createAsyncThunk(
+  "user/resetUserPassword",
+  async (resetData, { dispatch, rejectWithValue }) => {
     try {
       dispatch(setLoading(true));
-      const response = await axiosInstance.put("/api/v1/reset", userData);
+      const response = await axiosInstance.post(
+        "/api/v1/reset-password",
+        resetData,
+      );
       dispatch(setLoading(false));
       return response.data;
     } catch (err) {
@@ -82,10 +85,10 @@ const userSlice = createSlice({
         state.status = "failed";
         state.error = action.payload;
       })
-      .addCase(updateUserPassword.fulfilled, (state, action) => {
+      .addCase(resetUserPassword.fulfilled, (state, action) => {
         state.status = "succeeded";
       })
-      .addCase(updateUserPassword.rejected, (state, action) => {
+      .addCase(resetUserPassword.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       })
