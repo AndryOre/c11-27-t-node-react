@@ -6,6 +6,8 @@ import Itinerary2 from "../../assets/itinerary2.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { generateItinerary } from "../../redux/slices/itinerarySlice";
 import Loader from "../Ui/Loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CustomizeTrip = ({ setItineraryState, tripData }) => {
   const iduser = localStorage.getItem("iduser");
@@ -36,7 +38,7 @@ const CustomizeTrip = ({ setItineraryState, tripData }) => {
       userid: iduser,
     };
 
-    dispatch(generateItinerary(itineraryData))
+    /*     dispatch(generateItinerary(itineraryData))
       .unwrap()
       .then(result => {
         navigate(`/itinerary/new/${result.ID}`);
@@ -45,7 +47,10 @@ const CustomizeTrip = ({ setItineraryState, tripData }) => {
         if (error.message) {
           alert("Hubo un error al generar el itinerario. Intenta nuevamente.");
         }
-      });
+      }); */
+
+    toast.error("Generación de itinerario deshabilitado en cuenta demo");
+    toast.info("Visita el historial");
   };
 
   if (isLoading) {
@@ -54,6 +59,7 @@ const CustomizeTrip = ({ setItineraryState, tripData }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
+      <ToastContainer />
       <div className="flex  flex-col items-center gap-8 px-4 py-2 lg:flex-row lg:justify-center lg:rounded lg:bg-white lg:p-8 lg:shadow-md">
         <img
           src={Itinerary2}

@@ -4,13 +4,15 @@ import { recoverUserPassword } from "../../../redux/slices/userSlice";
 import Input from "../../Ui/Input";
 import Button from "../../Ui/Button";
 import ForgotPassword from "../../../assets/forgot-password.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RecoverPassword = ({ setAuthState }) => {
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
 
   const handlePasswordReset = () => {
-    dispatch(recoverUserPassword({ email }))
+    /*     dispatch(recoverUserPassword({ email }))
       .unwrap()
       .then(() => {
         setAuthState("check-email");
@@ -18,12 +20,14 @@ const RecoverPassword = ({ setAuthState }) => {
       .catch(error => {
         if (error.message) {
           alert(error.message);
-        }
-      });
+        } */
+
+    toast.error("Restablecimiento de contraseña deshabilitado");
   };
 
   return (
     <div className="flex flex-col items-center justify-center">
+      <ToastContainer />
       <div className="flex  flex-col items-center gap-8 px-4 py-2 lg:flex-row lg:justify-center lg:rounded lg:bg-white lg:p-8 lg:shadow-md">
         <img
           src={ForgotPassword}

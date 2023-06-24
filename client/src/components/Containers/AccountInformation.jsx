@@ -7,6 +7,8 @@ import {
   updateUserData,
   deleteUser,
 } from "../../redux/slices/userSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AccountInformation = () => {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const AccountInformation = () => {
       return;
     }
 
-    dispatch(updateUserData({ name, email, password, newPassword }))
+    /*     dispatch(updateUserData({ name, email, password, newPassword }))
       .unwrap()
       .then(() => {
         alert("Datos actualizados correctamente");
@@ -38,21 +40,26 @@ const AccountInformation = () => {
         if (error.message) {
           alert(error.message);
         }
-      });
+      }); */
+
+    toast.error("Actualización de datos deshabilitado en cuenta demo");
   };
 
   const handleDelete = () => {
-    dispatch(deleteUser({ email, password }))
+    /*     dispatch(deleteUser({ email, password }))
       .then(() => {
         navigate("/landing");
       })
       .catch(error => {
         console.error("Operation failed:", error);
-      });
+      }); */
+
+    toast.error("Eliminación de usuario deshabilitado en cuenta demo");
   };
 
   return (
     <div className="flex flex-col items-center justify-center">
+      <ToastContainer />
       <div className="flex  flex-col items-center gap-8 px-4 py-2 lg:flex-row lg:justify-center lg:rounded lg:bg-white lg:p-8 lg:shadow-md">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-2">

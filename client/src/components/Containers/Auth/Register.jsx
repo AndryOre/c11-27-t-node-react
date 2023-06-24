@@ -4,6 +4,8 @@ import Button from "../../Ui/Button";
 import SignUp from "../../../assets/sign-up.svg";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../../redux/slices/userSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = ({ setAuthState }) => {
   const [name, setName] = useState("");
@@ -18,7 +20,7 @@ const Register = ({ setAuthState }) => {
       alert("Las contraseñas no coinciden");
       return;
     }
-    dispatch(registerUser({ name, email, password }))
+    /*    dispatch(registerUser({ name, email, password }))
       .unwrap()
       .then(() => {
         alert("Registrado correctamente");
@@ -28,11 +30,14 @@ const Register = ({ setAuthState }) => {
         if (error.message) {
           alert(error.message);
         }
-      });
+      }); */
+
+    toast.error("Registro deshabilitado");
   };
 
   return (
     <div className="flex flex-col items-center justify-center">
+      <ToastContainer />
       <div className="flex  flex-col items-center gap-8 px-4 py-2 lg:flex-row lg:justify-center lg:rounded lg:bg-white lg:p-8 lg:shadow-md">
         <img src={SignUp} alt="Sign Up Image" className="h-24 lg:h-96" />
         <div className="flex flex-col gap-8">

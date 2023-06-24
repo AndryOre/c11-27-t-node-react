@@ -35,6 +35,21 @@ const Login = ({ setAuthState }) => {
             <div className="text-sm font-semibold text-neutral-800">
               ¡Planifiquemos tu proximo viaje!
             </div>
+            <div className="flex flex-col rounded bg-green-100 p-2">
+              <div className="font-bold text-neutral-900">Cuenta Demo</div>
+              <div className="flex flex-wrap">
+                <div className="font-semibold text-neutral-800">
+                  Correo electrónico:
+                </div>
+                <div>touristroute.nocountry@gmail.com</div>
+              </div>
+              <div className="flex  flex-wrap">
+                <div className="font-semibold text-neutral-800">
+                  Contraseña:
+                </div>
+                <div>touristroute</div>
+              </div>
+            </div>{" "}
           </div>
           <div className="flex flex-col gap-2">
             <Input
